@@ -1,0 +1,22 @@
+ja:
+  activerecord:
+    models:
+      picture: "Picture"
+      contact: "お問い合わせ"
+      user: "ユーザー"
+    attributes:
+      picture:
+        image: "写真ファイル"
+        comment: "コメント"
+      user:
+        title: "タイトル"
+        name: "名前"
+        email: "メールアドレス"
+        content: "内容"
+        current_password: "現在のパスワード"
+        new_password: "新しいパスワード"
+        password: "パスワード"
+        password_confirmation: "確認用パスワード"
+        remember_me: "ログインを記憶"
+        update: "更新"
+        cansel: "キャンセル"

@@ -1,0 +1,152 @@
+<div class="container">
+  <div class="col-md-10 col-md-offset-1 col-sm-10">
+    <h2>アカウント編集：<%= current_user.name %>さん</h2>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="field">
+        <div class="row">
+          <div class="col-xs-3">
+          </div>
+          <div class="col-xs-3">
+            <%= f.label :email %>
+          </div>
+          <div class="col-xs-3">
+            <%= f.email_field :email, autofocus: true %>
+          </div>
+          <div class="col-xs-3">
+          </div>
+        </div>
+      </div>
+
+      <!-- 名前入力用のフィールドを追加 -->
+      <div class="field">
+        <div class="row">
+          <div class="col-xs-3">
+          </div>
+          <div class="col-xs-3">
+            <%= f.label :名前 %>
+          </div>
+          <div class="col-xs-3">
+            <%= f.text_field :name%>
+          </div>
+          <div class="col-xs-3">
+          </div>
+        </div>
+      </div>
+
+      <% if @user.provider.blank? %>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+
+        <div class="field">
+          <div class="row">
+            <div class="col-xs-3">
+            </div>
+            <div class="col-xs-3">
+              <%= f.label :password %>
+            </div>
+            <div class="col-xs-3">
+              <%= f.password_field :password, autocomplete: "off" %>
+            </div>
+            <div class="col-xs-3">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-sm-12">
+              <p>(パスワードを変更しない場合は入力不要です)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="row">
+            <div class="col-xs-3">
+            </div>
+            <div class="col-xs-3">
+              <%= f.label :password_confirmation %>
+            </div>
+            <div class="col-xs-3">
+              <%= f.password_field :password_confirmation, autocomplete: "off" %>
+            </div>
+            <div class="col-xs-3">
+            </div>
+          </div>
+        </div>
+
+        <br>
+        <div class="field">
+          <div class="row">
+            <div class="col-xs-3">
+            </div>
+            <div class="col-xs-3">
+              <%= f.label :current_password %>
+            </div>
+            <div class="col-xs-3">
+              <%= f.password_field :current_password, autocomplete: "off" %>
+            </div>
+            <div class="col-xs-3">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-sm-12">
+              <p>(変更を反映するにはパスワードの入力が必要です)</p>
+            </div>
+          </div>
+        </div>
+
+        <br>
+        <div class="field">
+          <div class="row">
+            <div class="col-xs-3">
+            </div>
+            <div class="col-xs-3">
+              <%= f.label "顔写真" %>
+            </div>
+            <div class="col-xs-3">
+            </div>
+            <div class="col-xs-3">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6 col-xs-offset-3">
+              <%= profile_img(@user) if profile_img(@user) %>
+            </div>
+          </div>
+
+          <br>
+          <div class="field">
+            <div class="row">
+              <div class="col-xs-4">
+              </div>
+              <div class="col-xs-4">
+                <%= f.file_field :avatar %>
+              </div>
+              <div class="col-xs-4">
+              </div>
+            </div>
+          </div>
+          <%= f.hidden_field :avatar_cache %>
+        </div>
+      <% end %>
+
+      <br></br>
+      <div class="row">
+        <div class="col-xs-3 col-xs-offset-3">
+          <div class="actions">
+            <%= f.submit "更新", class: "btn btn-primary btn-block"%>
+          </div>
+        </div>
+
+    <% end %>
+
+      <div class="col-xs-3">
+        <%= button_to "キャンセル", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-default btn-block" %>
+      </div>
+    </div>
+
+    <%= link_to "Picture一覧に戻る", :back %>
+  </div>
+</div>

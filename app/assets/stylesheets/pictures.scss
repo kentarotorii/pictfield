@@ -1,0 +1,38 @@
+// Place all the styles related to the pictures controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.wrapper {
+    margin-bottom: 74px;
+    padding: 20px 20px 20px 35px;
+    .row {
+        border-bottom: 1px solid #ccc;
+        padding: 20px 0px 5px 0px;
+        text-align: left;
+        word-wrap: break-word;
+    }
+}
+
+input[type="submit"].btn-block{
+    margin: 5px 0;
+}
+
+.container{
+    padding-bottom: 85px;
+}
+
+.picture_author img{
+  width: 2.5em;
+  height: 2.5em;
+  margin-right: 0.5em;
+  object-fit: cover;
+}
+
+.btn.fa{
+  padding: 5px 5px;
+  color: #2c3e50;
+  font-size: 20px;
+}
+
+.filefield{
+  margin-bottom: 0.5em;
+}

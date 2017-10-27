@@ -1,0 +1,31 @@
+<%= form_for(@picture, url: choose_new_or_edit) do |f| %>
+  <% if @picture.errors.any? %>
+    <div id="error_explanation">
+      <h4 style="color: blue"><%= @picture.errors.count %> 個のエラーがあり保存できませんでした。</h4>
+      <ul style="color: blue">
+        <% @picture.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <% if @picture.image? %>
+      <div class="thumbnail">
+        <%= image_tag @picture.image.url %>
+      </div>
+    <% end %>
+    <br>
+    <%= f.file_field :image, class: 'filefield', accept: 'image/jpg,image/jpeg,image/png,image/gif'%>
+    <%= f.hidden_field :image_cache %>
+    <%= f.text_area :comment, rows: 4, placeholder: "コメントがあれば記入してください（140文字以下）", class: 'form-control' %>
+
+  </div>
+
+  <br>
+    <%= f.submit '投稿', class: 'btn btn-safe btn-block'%>
+  </br>
+<% end %>
+
+<%= link_to "Picture一覧画面にもどる", pictures_path %>

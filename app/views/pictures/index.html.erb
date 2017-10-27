@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+      <p class="flash"><%= notice %><%= alert %></p>
+      <h1>Picture一覧</h1>
+      <%= link_to "Pictureを登録する", new_picture_path, class: 'btn btn-default' %>
+      <% @pictures.each do |picture| %>
+          <div class="row">
+              <p><%= image_tag picture.image.url  if picture.image? %></p>
+              <p><%= picture.comment %></p>
+
+              <div class="col-md-9 col-md-offset-0 col-sm-9 col-sm-offset-0" style="padding-left:0px;">
+                <p  class="picture_author" style="float: left"><%= profile_img(picture.user) %><%= picture.user.name %>（<%= picture.created_at.strftime("%Y年%m月%d日") %>）</p>
+              </div>
+              <div class="col-md-3 col-md-offset-0 col-sm-3 col-sm-offset-0" float: right>
+                <%= link_to "", edit_picture_path(picture.id), class: 'btn fa fa-pencil-square-o',:title => "編集"%>
+                <%= link_to "", picture_path(picture.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn fa fa-trash',:title => "削除" %>
+              </div>
+          </div>
+      <% end %>
+
+      <%= paginate(@pictures) %>
+  </div>
+</div>
