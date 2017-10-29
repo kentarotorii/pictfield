@@ -1,14 +1,6 @@
 <div class="container">
+  <p class="flash"><%= notice %><%= alert %></p>
   <div class="row">
-  <div class="col-md-7 col-sm-7">
-    <h4>Today's Astronomy Picture</h4>
-    <div>
-      <img src="<%= NasaApi.get_api_info["url"] %>" />
-      <p style="text-align: right"><span class="fa fa-copyright"></span><span><%= NasaApi.get_api_info["copyright"] %></span></p>
-      <p><%= NasaApi.get_api_info["explanation"] %></p>
-    </div>
-  </div>
-
   <div class="col-md-5 col-sm-5">
     <%= alert %>
 
@@ -37,5 +29,15 @@
 
     <%= render "devise/shared/links" %>
   </div>
+
+  <div class="col-md-7 col-sm-7">
+    <h4>Today's Astronomy Picture</h4>
+    <div>
+      <img src="<%= NasaApi.get_api_info["url"] %>" />
+      <p style="text-align: right"><span class="fa fa-copyright"></span><span><%= NasaApi.get_api_info["copyright"] %></span></p>
+      <p><%= NasaApi.get_api_info["explanation"] %></p>
+    </div>
+  </div>
+
   </div>
 </div>
